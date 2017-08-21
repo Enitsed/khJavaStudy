@@ -54,6 +54,7 @@ public class Java016_print {
 		System.out.printf("당신의 색깔은 \"%s\"입니다.\n", "파랑");
 
 		System.out.printf("안녕\thello\n"); // printf 메소드에 출력기호가 없어도 작동은 한다.
+
 	}
 
 }
