@@ -19,7 +19,6 @@ public class Prob08 {
 		int coin100 = 100;
 		int coin50 = 50;
 		int coin10 = 10;
-		int coin1 = 1;
 		int amountOfCoin500;
 		int amountOfCoin100;
 		int amountOfCoin50;
@@ -30,7 +29,7 @@ public class Prob08 {
 		amountOfCoin100 = (money % coin500) / coin100;
 		amountOfCoin50 = (money % coin100) / coin50;
 		amountOfCoin10 = (money % coin50) / coin10;
-		amountOfCoin1 = (money % coin10) / coin1;
+		amountOfCoin1 = money % coin10;
 
 		System.out.printf("500 원 = %d개, 100원 =  %d개, 50원 = %d개, 10원 = %d개, 1원 = %d개 ", amountOfCoin500, amountOfCoin100,
 				amountOfCoin50, amountOfCoin10, amountOfCoin1);
