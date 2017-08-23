@@ -1,4 +1,4 @@
-package java0823_statement.prob;
+package java0822_statement.prob;
 
 /*
  * switch~case문을 이용해서 년도에 해당하는 띠를 구하는 프로그램을 구현하시오.

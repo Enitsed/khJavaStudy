@@ -1,4 +1,4 @@
-package java0823_statement;
+package java0822_statement;
 
 /*
  * 10 + 5 = 15

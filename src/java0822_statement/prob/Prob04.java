@@ -1,4 +1,4 @@
-package java0823_statement.prob;
+package java0822_statement.prob;
 
 /* 
 [문제] 중첩if를 이용하여 프로그램을 작성하시오
@@ -28,7 +28,7 @@ package java0823_statement.prob;
 */
 import java.io.*;
 
-class Prob04 {
+public class Prob04 {
 	public static void main(String[] args) throws IOException {
 
 		int kor = 95;

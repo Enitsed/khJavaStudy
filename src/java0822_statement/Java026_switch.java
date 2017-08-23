@@ -1,4 +1,4 @@
-package java0823_statement;
+package java0822_statement;
 
 public class Java026_switch {
 

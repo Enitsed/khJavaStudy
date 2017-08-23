@@ -1,4 +1,4 @@
-package java0823_statement.prob;
+package java0822_statement.prob;
 
 /*
  * if~else문을 이용해서 물품판매에 대한 판매금액을 계산하는 프로그램을 구현하시오.

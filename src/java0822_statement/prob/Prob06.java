@@ -1,4 +1,4 @@
-package java0823_statement.prob;
+package java0822_statement.prob;
 
 /*
  * 직급에 따른 수령 월급
@@ -47,7 +47,6 @@ public class Prob06 {
 		} else {
 			money += 0;
 		}
-
 		//////////////////////////////////////
 
 		System.out.printf("직급은 %s이며, 이번달 초과근무는 총 %d시간을 하셨습니다.\n", grade, overtime);
