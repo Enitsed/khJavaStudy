@@ -12,9 +12,9 @@ public class Prob_02 {
 
 	public static void main(String[] args) {
 		for (int year = 2001; year <= 2012; year++) {
-			if ((year / 4) == 0 && (year / 100) != 0) {
+			if ((year % 4) == 0 && (year % 100) != 0) {
 				System.out.println(year);
-			} else if ((year / 400) == 0) {
+			} else if ((year % 400) == 0) {
 				System.out.println(year);
 			}
 		}
