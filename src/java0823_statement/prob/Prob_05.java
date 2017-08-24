@@ -10,13 +10,18 @@ package java0823_statement.prob;
  *     
  */
 
-
-
-
 public class Prob_05 {
 
-	public static void main(String[] args) {		
-		
-	}//end main()
+	public static void main(String[] args) {
+		int x, y = 2;
+		for (x = 1; x <= 20; x++) {
+			System.out.printf("%d의 배수: ", y);
+			for (; y <= 5; y++) {
+				if (x % y == 0) {
+					System.out.printf("\t%d", x);
+				}
+			}
+		}
+	}// end main()
 
-}//end class
+}// end class
