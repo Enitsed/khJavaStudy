@@ -17,7 +17,7 @@ public class Prob_05 {
 		for (x = 2; x <= 5; x++) {
 			System.out.printf("%d의 배수 : ", x);
 			for (y = 1; y <= 20; y++) {
-				if (y % x != 0) {
+				if (y % x == 0) {
 					continue;
 				}
 				System.out.printf("\t%d", y);
