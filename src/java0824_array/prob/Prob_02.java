@@ -15,8 +15,6 @@ public class Prob_02 {
 		int cnt = 1;
 
 		// 여기를 구현하시오.
-		int colSum = 0;
-		int rowSum = 0;
 
 	}// end main()
 
