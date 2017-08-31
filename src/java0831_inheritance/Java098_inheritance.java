@@ -49,6 +49,7 @@ class SubClass extends SuperClass {
 		// 여기를 구현하세요.//////////////////////
 		super(a, b, c);
 		super.display();
+		sumData();
 		//////////////////////////////
 	}
 
@@ -61,7 +62,6 @@ public class Java098_inheritance {
 
 	public static void main(String[] args) {
 		SubClass ss = new SubClass(10, 20, 30);
-		ss.sumData();
 	}// end main( )
 
 }// end class
