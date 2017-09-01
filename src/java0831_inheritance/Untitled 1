@@ -1,0 +1,12 @@
+this는 해당 객체의 클래스 멤버 변수들을 호출하기 위해 사용된다. vs super는 해당 객체의 부모 클래스의 멤버 변수들을 호출하기 위해 사용된다.
+
+오버로딩 vs 오버라이딩
+기본데이터타입 vs 참조데이터타입
+Call by value vs Call by reference
+묵시적 형변환 vs 명시적 형변환
+상속(extends, implements)
+클래스
+인터페이스
+static, final, public, protected, default, private
+
+업캐스팅 vs 다운캐스팅
