@@ -34,7 +34,7 @@ package java0831_inheritance;
 
 }*/
 
-public class HomeWork0902 {
+public class HomeWork0901Quiz {
 	public static void main(String[] args) {
 		// 주석을 해제하세요
 		/*

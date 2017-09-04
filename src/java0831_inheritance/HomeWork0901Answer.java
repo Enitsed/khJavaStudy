@@ -65,7 +65,7 @@ class ChickenBarbeque extends Chicken implements Bornless {
 
 }
 
-public class HomeWork0901 {
+public class HomeWork0901Answer {
 	public static void main(String[] args) {
 		FriedChicken fc = new FriedChicken("BOQ", "소");
 		fc.sunsal();
