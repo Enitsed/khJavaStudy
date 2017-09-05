@@ -17,28 +17,18 @@ public class Prob004_String {
 	static String process(char[] arr) {
 		// arr매개변수에서 '_'은 공백으로 , '/'은 ':'으로 변경한후
 		// 리턴하는 프로그램을 구현하시오.
-		
-		
-		return null;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i] == '_') {
+				arr[i] = ' ';
+			} else if (arr[i] == '/') {
+				arr[i] = ':';
+			}
+		}
+		/*
+		 * String a = new String(arr);
+		 */
+		return String.valueOf(arr);
+
 	}// end process()
 
 }// end class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

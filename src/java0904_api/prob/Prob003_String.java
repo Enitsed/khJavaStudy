@@ -8,34 +8,31 @@ package java0904_api.prob;
  *   JSP
  *   EJB
  */
-public class Prob003_String {	
-			
-		public static void main(String[] args) {
-			System.out.println(makeInitial("Java Data Base Conectivity"));
-			System.out.println(makeInitial("Java Server Pages"));
-			System.out.println(makeInitial("Enterprise Java Beans"));
-		}//end main()
+public class Prob003_String {
 
-		private static String makeInitial(String fullName) {
-			//fullName의 매개변수에서 각 단어의 첫글자만
-			//반환하는 프로그램을 구현하시오.
-			
-			
-			return null;
-		}//end makeInitial()
+	public static void main(String[] args) {
+		System.out.println(makeInitial("Java Data Base Conectivity"));
+		System.out.println(makeInitial("Java Server Pages"));
+		System.out.println(makeInitial("Enterprise Java Beans"));
+	}// end main()
 
-}//end class
+	private static String makeInitial(String fullName) {
+		// fullName의 매개변수에서 각 단어의 첫글자만
+		// 반환하는 프로그램을 구현하시오.
+		/*
+		 * String[] array = fullName.split(" "); char[] arr = new char[array.length];
+		 * for (int i = 0; i < array.length; i++) { arr[i] = array[i].charAt(0); }
+		 * String data = new String(arr);
+		 */
 
+		String data = "";
+		for (int i = 0; i < fullName.length(); i++) {
+			if (i == 0 || fullName.charAt(i - 1) == ' ') {
+				data += fullName.charAt(i);
+			}
+		}
 
+		return data;
+	}// end makeInitial()
 
-
-
-
-
-
-
-
-
-
-
-
+}// end class
