@@ -51,7 +51,7 @@ public class Java125_RegEx {
 		 * matches() : 패턴이 전체 문자열과 일치하면 True
 		 */
 
-		String input1 = "11mar123dd";
+		String input1 = "agmargggd";
 		String input2 = "maaaaa";
 		String input3 = "252352";
 
@@ -66,8 +66,7 @@ public class Java125_RegEx {
 		
 		System.out.println(input1.matches("[\\w]{5,10}") && Pattern.compile("[\\d]").matcher(input1).find()
 				&& Pattern.compile("[a-zA-Z]").matcher(input1).find());
-		
-		
+
 		System.out.println(input2.matches("[\\w]{5,10}") && Pattern.compile("[\\d]").matcher(input2).find()
 				&& Pattern.compile("[a-zA-Z]").matcher(input2).find());
 
