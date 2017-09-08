@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class Java161_stream {
+public class Java162_stream {
 
 	public static void main(String[] args) {
 		System.out.println("데이터 입력:");
@@ -16,11 +16,16 @@ public class Java161_stream {
 		// 문자 스트림
 		BufferedReader br = new BufferedReader(ir);
 
+		int x, y;
+
 		try {
-			String line = br.readLine();
-			System.out.println(line);
+			System.out.println("x:");
+			x = Integer.parseInt(br.readLine());
+			System.out.println("y:");
+			y = Integer.parseInt(br.readLine());
+			System.out.printf("%d + %d = %d\n", x, y, x + y);
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(e.toString());
 		} finally {
 			try {
 				// 연결 종료

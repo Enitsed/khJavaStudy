@@ -20,11 +20,11 @@ public class Prob006_String {
 
 	public static char toChar(int x) {
 
-		return ' ';
+		return (char) x;
 	}
 
 	public static String result(char data) {
-
-		return null;
+		String a = String.valueOf(data);
+		return a;
 	}
 }
