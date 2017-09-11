@@ -1,10 +1,11 @@
 package java0911_stream.prob;
 
-
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.io.RandomAccessFile;
 
 /*
  * [문제] 
@@ -32,8 +33,32 @@ public class Prob01_stream {
 	}// end main()
 
 	private static void search(String inputFile, String searchWord) {
-		//여기를 구현하세요.
-		
+		// 여기를 구현하세요.
+
+		File file = new File(inputFile);
+		RandomAccessFile raf = null;
+		String str = null;
+		int line = 0;
+
+		try {
+			raf = new RandomAccessFile(file, "r");
+			while ((str = raf.readLine()) != null) {
+				line++;
+				if (str.contains(searchWord) | str.contains(searchWord.toLowerCase())) {
+					System.out.printf("%d line : %s\n", line, str);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				raf.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}// end search()
 }// end class

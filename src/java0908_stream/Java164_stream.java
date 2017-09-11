@@ -21,6 +21,7 @@ public class Java164_stream {
 		System.out.printf("이름 : %s \n", sc.next());
 		System.out.printf("평균 : %.1f \n", sc.nextDouble());
 
+		sc.close();
 	}
 
 }
