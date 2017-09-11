@@ -51,7 +51,7 @@ public class Prob002_stream {
 						int q = a.indexOf('_');
 						char alpha = a.charAt(q + 1);
 						String upper = String.valueOf(alpha);
-						upper.toUpperCase();
+						upper = upper.toUpperCase();
 
 						System.out.println(a);
 
