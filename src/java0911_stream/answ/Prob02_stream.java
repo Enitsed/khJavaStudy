@@ -1,7 +1,6 @@
-package java0911_stream.prob;
+package java0911_stream.answ;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -24,30 +23,55 @@ import java.io.IOException;
 public class Prob02_stream {
 	public static void main(String[] args) {
 		// 프로그램을 구현하시오.
-		File fr = new File(".\\src\\java0911_stream\\prob\\jumsu.txt");
-
-		FileReader ffr = null;
-		BufferedReader bf = null;
-		String student = "";
-		FileWriter fw = null;
+		int sum = 0;
+		double avg = 0.0;
+		int cnt = 0;
+		FileReader fr = null;
+		BufferedReader br = null;
+		FileWriter fw=null;
+		
 		try {
-			ffr = new FileReader(fr);
-			bf = new BufferedReader(ffr);
-
-			while ((student = bf.readLine()) != null) {
-				System.out.println(student);
+			fr = new FileReader(".\\src\\java0911_stream\\answ\\jumsu.txt");
+			br = new BufferedReader(fr);
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] str = line.split(":");
+				if (str.length > 1) {
+					sum += Integer.parseInt(str[1]);
+					cnt++;
+				}
 			}
 
+			avg = sum / (double) cnt;
+
+			avg = Math.floor(avg * 10) / 10;
+
+			System.out.println("program end");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
-				ffr.close();
-				bf.close();
+				br.close();
+				fr.close();
 			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		try {
+			fw = new FileWriter(".\\src\\java0911_stream\\answ\\jumsu.txt", true);
+			fw.write("\r\n총점:" + sum + "\r\n");
+			fw.write("평균:" + avg + "\r\n");
+			
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				fw.close();
+			} catch (IOException e) {				
 				e.printStackTrace();
 			}
 		}

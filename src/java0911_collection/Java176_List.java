@@ -23,6 +23,15 @@ class UserList {
 		}
 	}
 
+	public void remove(int index) {
+
+		for (int i = index; i < point; i++) {
+			sale[i] = sale[i + 1];
+		}
+		point--;
+
+	}
+
 	public int get(int index) {
 		return sale[index];
 	}
@@ -44,6 +53,8 @@ public class Java176_List {
 		ul.add(20);
 		ul.add(30);
 		ul.add(40);
+		ul.remove(1);
+
 		for (int i = 0; i < ul.size(); i++)
 			System.out.println(ul.get(i));
 
