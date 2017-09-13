@@ -33,6 +33,7 @@ public class Prob001_Vector {
 		String sn = null;
 		String[] strArr = null;
 		Vector<Book> v = new Vector<Book>();
+
 		while (sc.hasNextLine()) {
 			sn = sc.nextLine();
 			strArr = sn.split("/");

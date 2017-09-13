@@ -4,7 +4,7 @@ public class BookDTO {
 	private String title;
 	private String kind;
 	private int rentalPrice;
-	
+
 	public BookDTO(String title, String kind, int rentalPrice) {
 		this.title = title;
 		this.kind = kind;
@@ -34,5 +34,5 @@ public class BookDTO {
 	public void setRentalPrice(int rentalPrice) {
 		this.rentalPrice = rentalPrice;
 	}
-	
+
 }

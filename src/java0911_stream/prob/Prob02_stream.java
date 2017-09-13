@@ -30,13 +30,39 @@ public class Prob02_stream {
 		BufferedReader bf = null;
 		String student = "";
 		FileWriter fw = null;
+		String[] data = null;
+		int score = 0;
+		String name = null;
+		int sum = 0;
+		double avg = 0f;
+		int cnt = 0;
 		try {
 			ffr = new FileReader(fr);
 			bf = new BufferedReader(ffr);
-
 			while ((student = bf.readLine()) != null) {
-				System.out.println(student);
+
+				data = student.split(":");
+				for (String a : data) {
+					if (a.matches("[0-9]{1,3}")) {
+						score = Integer.parseInt(a);
+						sum += score;
+						cnt++;
+					} else {
+						name = a;
+					}
+				}
+				System.out.println(name + " : " + score);
+
 			}
+
+			fw = new FileWriter(fr, true);
+			avg = (double) sum / (double) cnt;
+			
+			fw.append("총점 : " + String.valueOf(sum) + "\n");
+			fw.append("평균 : " + String.valueOf(avg) + "\n");
+
+			System.out.println("총점: " + sum);
+			System.out.printf("평균: %.1f", avg);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -47,6 +73,7 @@ public class Prob02_stream {
 			try {
 				ffr.close();
 				bf.close();
+				fw.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

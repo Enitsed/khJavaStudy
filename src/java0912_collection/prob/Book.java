@@ -1,5 +1,6 @@
 package java0912_collection.prob;
-class Book{
+
+class Book {
 	private String title;
 	private String publisher;
 	private String writer;
@@ -42,5 +43,5 @@ class Book{
 
 	public void setPrice(String price) {
 		this.price = price;
-	}		
+	}
 }
