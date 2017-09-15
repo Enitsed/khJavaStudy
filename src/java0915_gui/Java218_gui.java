@@ -1,32 +1,40 @@
 package java0915_gui;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Frame;
-import java.awt.Panel;
-import java.awt.TextArea;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-// Button -> click -> ActionEvent -> ActionListener
-// TextField -> Enter -> ActionEvent -> ActionListener
-class TextInput extends Frame implements ActionListener {
-	TextField inputTxt;
-	Button clickBtn;
-	TextArea multiTra;
-	Panel pn;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
-	public TextInput() {
-		inputTxt = new TextField(20);
-		clickBtn = new Button("input");
-		pn = new Panel();
+/*
+ * AWT				Swing
+ * Frame		->	JFame
+ * TextField	->	JTextField
+ * Button		->	JButton
+ */
+
+//JButton -> click -> ActionEvent -> ActionListener
+//JTextField -> Enter -> ActionEvent -> ActionListener
+class TextInput2 extends JFrame implements ActionListener {
+	JTextField inputTxt;
+	JButton clickBtn;
+	JTextArea multiTra;
+	JPanel pn;
+
+	public TextInput2() {
+		inputTxt = new JTextField(10);
+		clickBtn = new JButton("input");
+		pn = new JPanel();
 		pn.add(inputTxt);
 		pn.add(clickBtn);
 
-		multiTra = new TextArea(10, 10);
+		multiTra = new JTextArea(10, 10);
 
 		// TextArea에서 편집 불가능
 		multiTra.setEditable(false);
@@ -67,10 +75,11 @@ class TextInput extends Frame implements ActionListener {
 	}
 }
 
-public class Java217_gui {
+public class Java218_gui {
 
 	public static void main(String[] args) {
-		new TextInput();
+		new TextInput2();
+
 	}
 
 }
