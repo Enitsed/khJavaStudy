@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
-import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 
 class EventTest extends JFrame implements ActionListener, ItemListener {
 	JRadioButton topBtn, midBtn, botBtn;
