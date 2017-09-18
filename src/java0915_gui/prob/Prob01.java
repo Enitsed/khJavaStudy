@@ -42,7 +42,11 @@ class MenuItem extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		Object obj = e.getSource();
+
+		if (obj == firstCom) {
+
+		}
 	}
 
 }// end class

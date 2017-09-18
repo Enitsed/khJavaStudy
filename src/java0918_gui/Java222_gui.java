@@ -1,7 +1,6 @@
-package java0918_gui.prob;
+package java0918_gui;
 
 import java.awt.GridLayout;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
