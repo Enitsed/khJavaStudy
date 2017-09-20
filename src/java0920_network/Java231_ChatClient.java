@@ -41,12 +41,13 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 	}
 
 	public Java231_ChatClient(String host, int port) {
-		System.out.println("사용자 이름을 입력하세요: ");
+		System.out.print("사용자 이름을 입력하세요 : ");
 		Scanner sc = null;
 		sc = new Scanner(System.in);
 		userName = sc.nextLine();
-		if (userName.equals(""))
+		if (userName.equals("")) {
 			userName = "guest";
+		}
 
 		this.host = host;
 		this.port = port;
@@ -54,26 +55,26 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 	}
 
 	private void initComponent() {
-		frm = new JFrame("채팅프로그램 [" + host + ":" + port + "]");
+		frm = new JFrame("채팅 프로그램 [" + host + ":" + port + "]");
 		taOutput = new JTextArea();
 		taOutput.setEditable(false);
 
 		tfInput = new JTextField(10);
 		pan = new JPanel();
-		lbName = new JLabel("입력: ");
-
-		pan.setLayout(new BorderLayout());
-		pan.add(tfInput, BorderLayout.CENTER);
-		pan.add(lbName, BorderLayout.WEST);
+		lbName = new JLabel("입력 : ");
 
 		JScrollPane scroll = new JScrollPane(taOutput);
 
 		frm.add(BorderLayout.CENTER, scroll);
 		frm.add(BorderLayout.SOUTH, pan);
 
+		pan.setLayout(new BorderLayout());
+		pan.add(lbName, BorderLayout.WEST);
+		pan.add(tfInput, BorderLayout.CENTER);
+
 		tfInput.addActionListener(this);
 
-		frm.setSize(500, 600);
+		frm.setSize(400, 400);
 		frm.setVisible(true);
 		frm.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frm.addWindowListener(new WindowAdapter() {
@@ -81,7 +82,6 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 			public void windowClosing(WindowEvent e) {
 				stop();
 			}
-
 		});
 	}
 
@@ -95,16 +95,13 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 				e.printStackTrace();
 			}
 		}
-
-		// 안전하게 메모리에서 삭제함
+		// 메모리에서 정리
 		frm.setVisible(false);
 		frm.dispose();
 		System.exit(0);
-
 	}
 
 	private void initStart() {
-
 		if (th == null) {
 			Socket socket = null;
 			try {
@@ -129,18 +126,17 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 			th.start();
 
 		}
-
 	}
 
 	public static void main(String[] args) {
+
 		Java231_ChatClient client = new Java231_ChatClient("127.0.0.1", 7777);
 		client.initStart();
 	}
 
 	@Override
 	public void run() {
-		System.out.println("메세지 수신 대기중\n");
-
+		System.out.println("메시지 수신 대기중");
 		while (!Thread.interrupted()) {
 			try {
 				String line = dataIn.readUTF();
@@ -160,26 +156,23 @@ public class Java231_ChatClient implements Runnable, ActionListener {
 			tfInput.requestFocus();
 		} catch (IOException e1) {
 			handleIOException(e1);
-			e1.printStackTrace();
 		}
 	}
 
-	private void handleIOException(IOException e1) {
+	private void handleIOException(IOException e) {
 		if (th != null) {
 			tfInput.setVisible(false);
 			frm.validate();
-		}
+			if (th != Thread.currentThread()) {
+				th.interrupt();
+				th = null;
 
-		if (th != Thread.currentThread()) {
-			th.interrupt();
-			th = null;
-			try {
-				dataOut.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				try {
+					dataOut.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		}
-
 	}
-
 }

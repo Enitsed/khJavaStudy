@@ -16,9 +16,10 @@ public class Java231_ChatHandler implements Runnable {
 	private DataInputStream dataIn;
 	private DataOutputStream dataOut;
 	private Thread th;
-	private static Vector handlers = new Vector(); // 유저들의 정보를 저장할 곳
+	private static Vector handlers = new Vector<>();
 
 	public Java231_ChatHandler() {
+
 	}
 
 	public Java231_ChatHandler(Socket socket) {
@@ -27,8 +28,8 @@ public class Java231_ChatHandler implements Runnable {
 
 	synchronized public void initStart() {
 		if (th == null) {
-			InputStream is = null;
-			OutputStream os = null;
+			InputStream is;
+			OutputStream os;
 			try {
 				is = socket.getInputStream();
 				os = socket.getOutputStream();
@@ -36,16 +37,8 @@ public class Java231_ChatHandler implements Runnable {
 				dataOut = new DataOutputStream(new BufferedOutputStream(os));
 				th = new Thread(this);
 				th.start();
-
 			} catch (IOException e) {
 				e.printStackTrace();
-			} finally {
-				try {
-					is.close();
-					os.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
 			}
 		}
 	}
@@ -53,6 +46,7 @@ public class Java231_ChatHandler implements Runnable {
 	@Override
 	public void run() {
 		handlers.addElement(this);
+
 		while (!Thread.interrupted()) {
 			try {
 				String message = dataIn.readUTF();
@@ -63,7 +57,7 @@ public class Java231_ChatHandler implements Runnable {
 		}
 	}
 
-	synchronized public void broadcast(String message) {
+	public void broadcast(String message) {
 		Enumeration enu = handlers.elements();
 		while (enu.hasMoreElements()) {
 			Java231_ChatHandler handler = (Java231_ChatHandler) enu.nextElement();
@@ -71,7 +65,6 @@ public class Java231_ChatHandler implements Runnable {
 				handler.dataOut.writeUTF(message);
 				handler.dataOut.flush();
 			} catch (IOException e) {
-				e.printStackTrace();
 				handler.stop();
 			}
 		}
@@ -90,5 +83,4 @@ public class Java231_ChatHandler implements Runnable {
 			}
 		}
 	}
-
 }
