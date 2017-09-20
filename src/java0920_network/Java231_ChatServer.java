@@ -12,6 +12,9 @@ public class Java231_ChatServer {
 			while (true) {
 				Socket client = server.accept();
 				System.out.println("client가 " + client.getInetAddress().getHostAddress() + "로 접속");
+				Java231_ChatHandler handler = new Java231_ChatHandler(client);
+
+				handler.initStart();
 			}
 
 		} catch (IOException e) {
