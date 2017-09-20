@@ -8,8 +8,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -81,7 +83,9 @@ public class PersonInfo extends JFrame implements ActionListener, MouseListener 
 		} else if (obj == main.clearB) {
 			init(); // 초기화
 		} else if (obj == menu.fsave || obj == tool.saveB) {
-			fileSave();
+			fileSave(); // 파일 저장
+		} else if (obj == menu.fopen || obj == tool.openB) {
+			fileOpen(); // 파일 열기
 		}
 
 	}
@@ -325,6 +329,32 @@ public class PersonInfo extends JFrame implements ActionListener, MouseListener 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	private void fileOpen() {
+		JFileChooser chooser = new JFileChooser();
+		if (chooser.showOpenDialog(this) == JFileChooser.CANCEL_OPTION) {
+			return;
+		}
+		setTableClear();
+		File file = chooser.getSelectedFile();
+		Scanner sc = null;
+		try {
+			sc = new Scanner(file);
+			while (sc.hasNextLine()) {
+				String[] line = sc.nextLine().split("/");
+				main.table.setValueAt(line[0], Integer.parseInt(line[0]) - 1, 0);
+				main.table.setValueAt(line[1], Integer.parseInt(line[0]) - 1, 1);
+				main.table.setValueAt(line[2], Integer.parseInt(line[0]) - 1, 2);
+				main.table.setValueAt(line[3], Integer.parseInt(line[0]) - 1, 3);
+				main.table.setValueAt(line[4], Integer.parseInt(line[0]) - 1, 4);
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			sc.close();
 		}
 
 	}
