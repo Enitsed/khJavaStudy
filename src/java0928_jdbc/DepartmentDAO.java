@@ -27,6 +27,13 @@ import java.util.List;
  * 3 위치표시자(placeholder)(?)를 사용하여 쿼리문을 간략하게 작성한다.
  */
 
+/*
+ * 싱글톤 패턴 : 하나의 객체만을 생성해서 사용할 수 있도록 설계한 구조이다.
+ * 1. 생성자의 접근 제어자는 private
+ * 2. 객체 자신을 생성한다.
+ * 3. 생성된 객체를 넘겨줄 수 있는 메소드를 정의한다. (static)
+ */
+
 // DAO(Data Access Object) : 데이터 접근 객체
 public class DepartmentDAO {
 	Connection conn = null;
@@ -34,7 +41,13 @@ public class DepartmentDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
-	public DepartmentDAO() {
+	static DepartmentDAO dao = new DepartmentDAO();
+
+	private DepartmentDAO() {
+	}
+
+	public static DepartmentDAO getInstance() {
+		return dao;
 	}
 
 	private Connection init() throws ClassNotFoundException, SQLException {

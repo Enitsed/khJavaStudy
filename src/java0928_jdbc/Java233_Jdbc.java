@@ -12,7 +12,10 @@ import java.util.List;
 public class Java233_Jdbc {
 
 	public static void main(String[] args) {
-		DepartmentDAO dao = new DepartmentDAO();
+		// DepartmentDAO dao = new DepartmentDAO();
+		DepartmentDAO dao = DepartmentDAO.getInstance();
+		// 싱글톤 사용 이유 : 여러가지 메소드를 사용할 때 매 사용시마다 객체생성을 할 필요 없이 한번 객체를 생성해놓고 사용하기위해서
+
 		List<DepartmentDTO> aList = dao.listMethod();
 
 		for (int i = 0; i < aList.size(); i++) {
