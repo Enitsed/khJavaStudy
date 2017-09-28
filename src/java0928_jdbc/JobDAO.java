@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class JobDAO {
 	Connection conn = null;
@@ -28,8 +29,8 @@ public class JobDAO {
 		return conn;
 	}
 
-	public ArrayList<JobDTO> listJobs() {
-		ArrayList<JobDTO> aList = new ArrayList<JobDTO>();
+	public List<JobDTO> listJobs() {
+		List<JobDTO> aList = new ArrayList<JobDTO>();
 
 		try {
 			conn = init();

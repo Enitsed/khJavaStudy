@@ -16,13 +16,14 @@ public class Java233_Jdbc {
 		DepartmentDAO dao = DepartmentDAO.getInstance();
 		// 싱글톤 사용 이유 : 여러가지 메소드를 사용할 때 매 사용시마다 객체생성을 할 필요 없이 한번 객체를 생성해놓고 사용하기위해서
 
-		List<DepartmentDTO> aList = dao.listMethod();
+		// List<DepartmentDTO> aList = dao.listMethod();
+
+		List<DepartmentDTO> aList = dao.searchMethod("man");
 
 		for (int i = 0; i < aList.size(); i++) {
 			DepartmentDTO dto = aList.get(i);
 			System.out.printf("%d %s %d %d \n", dto.getDepartment_id(), dto.getDepartment_name(), dto.getManager_id(),
 					dto.getLocation_id());
-
 		}
 
 	}

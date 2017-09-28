@@ -107,4 +107,34 @@ public class DepartmentDAO {
 		return aList;
 	}
 
+	public List<DepartmentDTO> searchMethod(String data) {
+		List<DepartmentDTO> aList = new ArrayList<DepartmentDTO>();
+
+		try {
+			conn = init();
+			stmt = conn.createStatement();
+			String sql = "SELECT * FROM departments WHERE lower(department_name) LIKE lower('%" + data + "%')";
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				DepartmentDTO dto = new DepartmentDTO();
+				dto.setDepartment_id(rs.getInt("department_id"));
+				dto.setDepartment_name(rs.getString("department_name"));
+				dto.setManager_id(rs.getInt("manager_id"));
+				dto.setLocation_id(rs.getInt("location_id"));
+				aList.add(dto);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				exit();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return aList;
+	}
+
 }
