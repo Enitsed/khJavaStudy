@@ -41,7 +41,7 @@ public class DepartmentDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
-	static DepartmentDAO dao = new DepartmentDAO();
+	private static DepartmentDAO dao = new DepartmentDAO();
 
 	private DepartmentDAO() {
 	}
