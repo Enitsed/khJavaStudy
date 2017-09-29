@@ -52,16 +52,23 @@ public class EmpDAO {
 	}
 
 	public List<EmpDTO> rangeMethod(HashMap<String, Integer> map) {
-		map.get("start");
-		map.get("end");
 		List<EmpDTO> aList = new ArrayList<EmpDTO>();
 
 		try {
 			conn = init();
-			String sql = "SELECT a.* FROM (SELECT rownum rm, e.* FROM EMPLOYEES e ORDER BY EMPLOYEE_ID) a WHERE rm > "
-					+ map.get("start") + " AND rm <= " + map.get("end");
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+
+			// String sql = "SELECT a.* FROM (SELECT rownum rm, e.* FROM EMPLOYEES e ORDER
+			// BY EMPLOYEE_ID) a WHERE rm > "
+			// + map.get("start") + " AND rm <= " + map.get("end");
+
+			String sql = "SELECT a.* FROM (SELECT rownum rm, e.* FROM EMPLOYEES e ORDER BY EMPLOYEE_ID) a WHERE rm > ? AND rm <= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, map.get("start"));
+			pstmt.setInt(2, map.get("end"));
+			rs = pstmt.executeQuery();
+
+			// stmt = conn.createStatement();
+			// rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
 				EmpDTO dto = new EmpDTO();
@@ -85,6 +92,43 @@ public class EmpDAO {
 
 		return aList;
 
+	}
+
+	public List<EmpDTO> searchMethod(String str) {
+		List<EmpDTO> aList = new ArrayList<EmpDTO>();
+		try {
+			conn = init();
+			String sql = "SELECT * FROM EMPLOYEES WHERE lower(first_name) LIKE lower('%' || ? || '%')";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, str);
+			rs = pstmt.executeQuery();
+
+			// String sql = "SELECT * FROM EMPLOYEES WHERE lower(first_name) LIKE lower('%"
+			// + str + "%')";
+			// stmt = conn.createStatement();
+			// rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				EmpDTO dto = new EmpDTO();
+				dto.setEmployee_id(rs.getInt("employee_id"));
+				dto.setFirst_name(rs.getString("first_name"));
+				dto.setSalary(rs.getInt("salary"));
+				dto.setHire_date(rs.getDate("hire_date"));
+
+				aList.add(dto);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				exit();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return aList;
 	}
 
 }
