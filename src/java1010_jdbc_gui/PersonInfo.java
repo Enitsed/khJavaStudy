@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -78,13 +79,15 @@ public class PersonInfo extends JFrame implements ActionListener, MouseListener 
 
 	// 테이블의 데이터 파일에 저장
 	public void saveFile() {
-		File file = new File("/src/java1010_jdbc_gui/sample.txt");
+		JFileChooser chooser = new JFileChooser();
+		if (chooser.showOpenDialog(this) == JFileChooser.CANCEL_OPTION)
+			return;
+		File file = chooser.getSelectedFile();
 		FileWriter fw = null;
 
 		try {
 			fw = new FileWriter(file);
 			for (int row = 0; row < main.tableModel.getRowCount(); row++) {
-
 				if (main.table.getValueAt(row, 0) == null) {
 					return;
 				} else {
@@ -92,8 +95,7 @@ public class PersonInfo extends JFrame implements ActionListener, MouseListener 
 							+ main.tableModel.getValueAt(row, 1).toString() + "/"
 							+ main.tableModel.getValueAt(row, 2).toString() + "/"
 							+ main.tableModel.getValueAt(row, 3).toString() + "/"
-							+ main.tableModel.getValueAt(row, 4).toString());
-
+							+ main.tableModel.getValueAt(row, 4).toString() + "\r\n");
 				}
 			}
 
