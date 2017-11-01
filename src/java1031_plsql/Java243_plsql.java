@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
-import oracle.jdbc.driver.OracleTypes;
-
 /*
 create or replace procedure my_select
 (v_empid in number,
