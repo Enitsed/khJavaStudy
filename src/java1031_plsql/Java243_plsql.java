@@ -59,7 +59,7 @@ public class Java243_plsql {
 	}
 
 	public static void main(String[] args) {
-
+		new Java243_plsql();
 	}
 
 }
