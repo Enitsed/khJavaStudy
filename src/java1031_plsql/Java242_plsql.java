@@ -59,20 +59,23 @@ public class Java242_plsql {
 
 			String sql = "{call pl_emplist(?, ?)}";
 			cstmt = conn.prepareCall(sql);
-			cstmt.setString(1, "차두리");
-			cstmt.setString(2, "포항");
-			registerOutParameter(2, OracleTypes.CURSOR);
-			cstmt.execute();
+			cstmt.setInt(1, 20);
+			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+			boolean result = cstmt.execute();
+			rs = (ResultSet) cstmt.getObject(2);
+			while (rs.next()) {
+				System.out.printf("%d %s %d %d \n", rs.getInt("employee_id"), rs.getString("first_name"),
+						rs.getInt("salary"), rs.getInt("department_id"));
+			}
+
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}// end process()
 
 	public static void main(String[] args) {
-
+		new Java242_plsql();
 	}
 }
